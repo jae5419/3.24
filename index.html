@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>우재윤-화면설계</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+  <div id="app">
+    <h1>메모</h1>
+    <input type="text" v-model="memoclass.title">
+    <br>
+    <input type="text" v-model="memoclass.memo" style="width: 300px; height: 200px;">
+    <button @click="addMemo" style="position: relative; top: 100px;">추가</button>
+    <memo-component v-for="m in memolist" @delete="deleteMemo" :id="m.id" :key="m.id">
+      <h3 slot="title" style="display: inline-block;">{{ m.title }}</h3>
+      <p slot="memo">{{ m.memo }}</p>
+    </memo-component>
+  </div>
+
+  <script src="./memo-component.js"></script>
+  <script src="./main.js"></script>
+</body>
+</html>
